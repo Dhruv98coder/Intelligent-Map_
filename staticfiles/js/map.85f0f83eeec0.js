@@ -9,11 +9,17 @@ L.control.zoom({position:"bottomright"}).addTo(map);
 
 let mode="car",currentPosition=null,watchId=null,fromLocation=null,toLocation=null;
 let routeLayers=[],markers=[],currentMarker=null,destinationMarker=null,navLine=null,activeRoute=null,navTimer=null,lastNavReroute=null,navStepIndex=0,lastSpokenStep=-1;
+<<<<<<< HEAD
 let rerouteBusy=false,lastRerouteAt=0,searchTimer=null,searchController=null,weatherRequestSerial=0,lastRerouteOrigin=null;
 const ROUTE_OFFROAD_KM=0.035; // ~35 m off the active road before rerouting
 const REROUTE_COOLDOWN_MS=2800;
 const REROUTE_MIN_MOVE_KM=0.020; // don't reroute again unless user has moved ~20 m
 const NAV_UPDATE_MS=1000;
+=======
+let rerouteBusy=false,lastRerouteAt=0,searchTimer=null,searchController=null,weatherRequestSerial=0;
+const ROUTE_OFFROAD_KM=0.045; // ~45 m off the active road before rerouting
+const REROUTE_COOLDOWN_MS=4500;
+>>>>>>> 18b97f5c09e78b2c0578622a3fd9d3bbb52bf3b5
 const API={search:document.body.dataset.searchUrl,route:document.body.dataset.routeUrl,smartConnect:document.body.dataset.smartConnectUrl,weather:document.body.dataset.weatherUrl,nearby:document.body.dataset.nearbyUrl,awareness:document.body.dataset.awarenessUrl,train:document.body.dataset.trainUrl};
 
 function csrfToken(){const m=document.cookie.match(/(?:^|; )csrftoken=([^;]+)/);return m?decodeURIComponent(m[1]):""}
@@ -131,6 +137,7 @@ function nearestPointOnRoute(route,lat,lon){
  for(let i=0;i<coords.length-1;i++){const a=coords[i],b=coords[i+1];const refLat=(a[1]+b[1])/2;const x=(b[0]-a[0])*Math.cos(refLat*Math.PI/180),y=b[1]-a[1];const px=(lon-a[0])*Math.cos(refLat*Math.PI/180),py=lat-a[1];const den=x*x+y*y||1;let t=(px*x+py*y)/den;t=Math.max(0,Math.min(1,t));const qLon=a[0]+(b[0]-a[0])*t,qLat=a[1]+(b[1]-a[1])*t;const d=_haversine(lat,lon,qLat,qLon);if(d<best.distance)best={distance:d,index:i,t,lat:qLat,lon:qLon}}
  return best;
 }
+<<<<<<< HEAD
 function cumulativeRouteDistances(route){
  const coords=route?.geometry?.coordinates||[]; const d=[0];
  for(let i=1;i<coords.length;i++) d.push(d[i-1]+_haversine(coords[i-1][1],coords[i-1][0],coords[i][1],coords[i][0]));
@@ -145,10 +152,13 @@ function remainingRouteDistanceKm(route,lat,lon){
  const doneKm=(cum[n.index]||0)+fromA;
  return Math.max(0,(cum[cum.length-1]||0)-doneKm);
 }
+=======
+>>>>>>> 18b97f5c09e78b2c0578622a3fd9d3bbb52bf3b5
 function remainingRouteGeometry(route,lat,lon){
  const coords=route?.geometry?.coordinates||[];if(coords.length<2)return route?.geometry;const n=nearestPointOnRoute(route,lat,lon);if(!n)return route.geometry;const out=[[n.lon,n.lat],...coords.slice(n.index+1)];return {type:"LineString",coordinates:out};
 }
 function checkOffRouteAndReroute(){
+<<<<<<< HEAD
  if(!currentPosition||!activeRoute||rerouteBusy)return;
  const nearest=nearestPointOnRoute(activeRoute,currentPosition.latitude,currentPosition.longitude);if(!nearest)return;
  const movedSinceReroute=lastRerouteOrigin?_haversine(currentPosition.latitude,currentPosition.longitude,lastRerouteOrigin.latitude,lastRerouteOrigin.longitude):Infinity;
@@ -164,10 +174,25 @@ function startNavigation(){
  if(!currentPosition){locateMe(true);setTimeout(()=>startNavigation(),1200);return}if(!activeRoute){alert("Find a route first.");return}
  document.getElementById("navHud").classList.remove("hidden");lastNavReroute={...currentPosition};lastRerouteAt=Date.now();lastRerouteOrigin={...currentPosition};navStepIndex=0;lastSpokenStep=-1;document.getElementById("navDestination").textContent=toLocation?.name||"Destination";document.getElementById("routePanel").classList.add("hidden");
  updateNavHUD();if(!watchId)locateMe();if(navTimer)clearInterval(navTimer);navTimer=setInterval(()=>{updateNavHUD();speakNextManeuver()},NAV_UPDATE_MS);speakNextManeuver();
+=======
+ if(!currentPosition||!activeRoute||rerouteBusy)return;const nearest=nearestPointOnRoute(activeRoute,currentPosition.latitude,currentPosition.longitude);if(!nearest)return;
+ if(nearest.distance>ROUTE_OFFROAD_KM && Date.now()-lastRerouteAt>REROUTE_COOLDOWN_MS)rerouteLive();
+}
+async function rerouteLive(){
+ if(!currentPosition||!toLocation||!activeRoute||rerouteBusy)return;rerouteBusy=true;lastRerouteAt=Date.now();lastNavReroute={...currentPosition};
+ try{const r=await fetch(API.route,{method:"POST",headers:{"Content-Type":"application/json","X-CSRFToken":csrfToken()},body:JSON.stringify({from:currentPosition,to:toLocation,mode})}).then(x=>x.json());if(r.success){window.lastRoutes=r.routes||[r.route];activeRoute=r.route||r.routes[0];navStepIndex=0;lastSpokenStep=-1;routeLayers.forEach(x=>map.removeLayer(x));routeLayers=[];drawRoutes(window.lastRoutes);showSteps(activeRoute);document.getElementById("awarenessText").textContent="Route updated for your new road."}}
+ catch(e){}finally{rerouteBusy=false}
+}
+function startNavigation(){
+ if(!currentPosition){locateMe(true);setTimeout(()=>startNavigation(),1500);return}if(!activeRoute){alert("Find a route first.");return}
+ document.getElementById("navHud").classList.remove("hidden");lastNavReroute={...currentPosition};lastRerouteAt=Date.now();navStepIndex=0;lastSpokenStep=-1;document.getElementById("navDestination").textContent=toLocation?.name||"Destination";document.getElementById("routePanel").classList.add("hidden");
+ updateNavHUD();if(!watchId)locateMe();if(navTimer)clearInterval(navTimer);navTimer=setInterval(()=>{updateNavHUD();speakNextManeuver()},2000);speakNextManeuver();
+>>>>>>> 18b97f5c09e78b2c0578622a3fd9d3bbb52bf3b5
 }
 function stopNavigation(){document.getElementById("navHud").classList.add("hidden");if(navTimer)clearInterval(navTimer);navTimer=null;speechStop();if(navLine){map.removeLayer(navLine);navLine=null}}
 function recenterNavigation(){if(currentPosition)map.setView([currentPosition.latitude,currentPosition.longitude],17,{animate:true})}
 function updateNavHUD(){
+<<<<<<< HEAD
  if(!currentPosition||!toLocation||!activeRoute)return;const nearest=nearestPointOnRoute(activeRoute,currentPosition.latitude,currentPosition.longitude);const d=remainingRouteDistanceKm(activeRoute,currentPosition.latitude,currentPosition.longitude);
  document.getElementById("navRemaining").textContent=d<1?(d*1000).toFixed(0)+" m":d.toFixed(1)+" km";
  if(d<=0.035){document.getElementById("navInstruction").textContent="You have arrived at your destination.";document.getElementById("awarenessText").textContent="Arrived. Navigation can be stopped now.";speechStop();}
@@ -175,6 +200,12 @@ function updateNavHUD(){
  const mins=activeRoute.duration_minutes*(d/Math.max(activeRoute.distance_km,.1));document.getElementById("navEta").textContent=new Date(Date.now()+mins*60000).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
  if(navLine)map.removeLayer(navLine);const geom=remainingRouteGeometry(activeRoute,currentPosition.latitude,currentPosition.longitude);navLine=L.geoJSON(geom,{style:{color:"#2563eb",weight:2.2,opacity:.82,lineCap:"round",lineJoin:"round"}}).addTo(map);
  if(document.getElementById("navHud")&&!document.getElementById("navHud").classList.contains("hidden")){const z=map.getZoom();if(z>=15)map.panTo([currentPosition.latitude,currentPosition.longitude],{animate:true,duration:.22})}
+=======
+ if(!currentPosition||!toLocation||!activeRoute)return;const nearest=nearestPointOnRoute(activeRoute,currentPosition.latitude,currentPosition.longitude);const d=nearest?.distance<0.12?_haversine(currentPosition.latitude,currentPosition.longitude,toLocation.latitude,toLocation.longitude):_haversine(currentPosition.latitude,currentPosition.longitude,toLocation.latitude,toLocation.longitude);
+ document.getElementById("navRemaining").textContent=d<1?(d*1000).toFixed(0)+" m":d.toFixed(1)+" km";const speed=currentPosition.speed?currentPosition.speed*3.6:0;document.getElementById("navSpeed").textContent=speed.toFixed(0);const mins=activeRoute.duration_minutes*(d/Math.max(activeRoute.distance_km,.1));document.getElementById("navEta").textContent=new Date(Date.now()+mins*60000).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
+ if(navLine)map.removeLayer(navLine);const geom=remainingRouteGeometry(activeRoute,currentPosition.latitude,currentPosition.longitude);navLine=L.geoJSON(geom,{style:{color:"#2563eb",weight:3,opacity:.82,lineCap:"round",lineJoin:"round"}}).addTo(map);
+ if(document.getElementById("navHud")&&!document.getElementById("navHud").classList.contains("hidden")){const z=map.getZoom();if(z>=15)map.panTo([currentPosition.latitude,currentPosition.longitude],{animate:true,duration:.35})}
+>>>>>>> 18b97f5c09e78b2c0578622a3fd9d3bbb52bf3b5
 }
 function speakNextManeuver(){
  if(!currentPosition||!activeRoute?.steps?.length)return;let best=navStepIndex,bestD=Infinity;for(let i=Math.max(0,navStepIndex-1);i<activeRoute.steps.length;i++){const s=activeRoute.steps[i],loc=s.location||[];if(loc.length<2)continue;const d=_haversine(currentPosition.latitude,currentPosition.longitude,loc[0],loc[1]);if(d<bestD){bestD=d;best=i}}navStepIndex=best;const step=activeRoute.steps[best];
