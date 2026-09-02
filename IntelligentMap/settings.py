@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-okly6$cn)5be-1x9&3otghh$d9m5(fh#nz+sr+5whh@d@@6(y(
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "intelligent-map.onrender.com",
+    "intelligent-map-zjfe.onrender.com",
     "localhost",
     "127.0.0.1",
 ]
