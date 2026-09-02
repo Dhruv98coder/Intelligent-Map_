@@ -1,0 +1,125 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f">
+<title>GoPlan | IntelligentMap • Delhi NCR</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="{% static 'css/map.css' %}">
+</head>
+<body data-search-url="{% url 'search_places' %}" data-route-url="{% url 'calculate_route' %}" data-smart-connect-url="{% url 'smart_connect' %}" data-weather-url="{% url 'weather' %}" data-nearby-url="{% url 'nearby_places' %}" data-awareness-url="{% url 'awareness' %}" data-train-url="{% url 'train_schedule' %}">
+<div class="app">
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">➤</div>
+    <div class="brand-copy">
+      <b class="dekho-brand"><span>DEKHO</span> <span>BHARAT</span></b>
+      <span class="intelligent-label">INTELLIGENT MAP · DELHI NCR</span>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button onclick="locateMe(true)" class="glass-btn">⌖ <span>My location</span></button>
+    <button onclick="openMetro()" class="metro-top">🚇 <span>Metro</span></button>
+    <button onclick="toggleWeather()" class="glass-btn weather-top">☀ <span>Weather</span></button>
+  </div>
+</header>
+
+<main id="mapArea"><div id="map"></div>
+  <!-- Fast From / To search: the main mobile-friendly control -->
+  <button id="searchToggleBtn" class="search-toggle" onclick="toggleSearchBox()" aria-expanded="true" aria-controls="routeSearchBox">
+    <span class="search-toggle-icon">⌕</span><span id="searchToggleText">Hide search</span>
+  </button>
+  <section id="routeSearchBox" class="search-box" aria-label="Route search">
+    <div class="search-title">SMART ROUTE SEARCH · DELHI NCR</div>
+    <div class="route-search-row">
+      <div class="route-search-field">
+        <span class="route-dot from-dot"></span>
+        <input id="fromInput" value="Current location" placeholder="From: current location" autocomplete="off" spellcheck="false">
+        <button class="field-action" onclick="useCurrentLocation()" aria-label="Use current location">⌖</button>
+      </div>
+      <button class="swap-btn" onclick="swapLocations()" aria-label="Swap From and To">⇅</button>
+    </div>
+    <div id="fromSuggestions" class="suggestions"></div>
+    <div class="route-search-row">
+      <div class="route-search-field">
+        <span class="route-dot to-dot"></span>
+        <input id="toInput" placeholder="To: search any place, road or landmark" autocomplete="off" spellcheck="false">
+        <button class="field-action" onclick="focusRouteSearch('toInput')" aria-label="Search destination">⌕</button>
+      </div>
+    </div>
+    <div id="toSuggestions" class="suggestions"></div>
+    <div class="search-bottom-row">
+      <button class="mode-mini active" data-mode="car" onclick="setMode('car')">🚗 Car</button>
+      <button class="mode-mini" data-mode="bike" onclick="setMode('bike')">🏍 Bike</button>
+      <button class="mode-mini" data-mode="foot" onclick="setMode('foot')">🚶 Walk</button>
+      <button class="find-mini" onclick="findRoute()">Find route →</button>
+    </div>
+  </section>
+
+  <div class="map-tools">
+    <button onclick="map.zoomIn()">+</button><button onclick="map.zoomOut()">−</button><button onclick="recenterNavigation()">⌖</button>
+  </div>
+
+  <section id="routePanel" class="panel route-panel hidden">
+    <div class="panel-head"><div><small>SMART TRIP PLANNER</small><h2>Route details</h2><p>Live GPS, alternate roads and turn-by-turn guidance.</p></div><button onclick="closePanel('routePanel')">×</button></div>
+    <div class="section-label">Travel mode</div>
+    <div class="mode-grid">
+      <button class="mode active" data-mode="car" onclick="setMode('car')"><b>🚗</b><span>Car</span><em>road</em></button>
+      <button class="mode" data-mode="bike" onclick="setMode('bike')"><b>🏍</b><span>Bike</span><em>road</em></button>
+      <button class="mode" data-mode="foot" onclick="setMode('foot')"><b>🚶</b><span>Walk</span><em>walk</em></button>
+      <button class="mode" data-mode="train" onclick="setMode('train')"><b>🚆</b><span>Train</span><em>rail</em></button>
+      <button class="mode metro-mode" data-mode="metro" onclick="openMetro()"><b>🚇</b><span>Metro</span><em>Delhi NCR</em></button>
+    </div>
+    <div id="routeSummary" class="summary hidden"><div><b id="summaryDistance">—</b><span>distance</span></div><div><b id="summaryDuration">—</b><span>travel time</span></div><div><b id="summaryArrival">—</b><span>arrival</span></div></div>
+    <div id="routeOptions" class="route-options"></div>
+    <section id="smartConnect" class="smart-connect hidden">
+      <div class="smart-connect-head"><div><small>SMART CONNECT</small><b>Auto → Bus → Walk</b></div><span class="estimate-pill">ESTIMATE</span></div>
+      <div id="smartConnectBody"></div>
+    </section>
+    <button id="startNavBtn" class="navigate hidden" onclick="startNavigation()">▶ Start navigation</button>
+  </section>
+
+  <section id="nearbyPanel" class="panel nearby-panel hidden">
+    <div class="panel-head"><div><small>AROUND YOU</small><h2>Nearby help</h2><p>Useful places within the NCR area.</p></div><button onclick="closePanel('nearbyPanel')">×</button></div>
+    <div class="nearby-grid">
+      <button onclick="loadNearby('metro')">🚇<span>Metro</span></button><button onclick="loadNearby('train')">🚆<span>Railway</span></button>
+      <button onclick="loadNearby('food')">🍴<span>Food</span></button><button onclick="loadNearby('hotel')">🏨<span>Hotels</span></button>
+      <button onclick="loadNearby('hospital')">✚<span>Hospitals</span></button><button onclick="loadNearby('pharmacy')">⚕<span>Pharmacy</span></button>
+      <button onclick="loadNearby('atm')">₹<span>ATM</span></button><button onclick="loadNearby('tourist')">★<span>GoPlan places</span></button>
+    </div>
+    <div id="nearbyResults" class="result-list"><p class="muted">Choose a category.</p></div>
+  </section>
+
+  <section id="weatherPanel" class="panel weather-panel hidden">
+    <div class="panel-head"><div><small>WEATHER AWARENESS</small><h2>Travel weather</h2><p>Live conditions for you and your destination.</p></div><button onclick="closePanel('weatherPanel')">×</button></div>
+    <div class="weather-now"><div class="weather-icon" id="weatherIcon">☀</div><strong id="weatherTemp">—°</strong><div class="weather-copy"><b id="weatherPlace">Current location</b><span id="weatherText">Waiting for GPS…</span></div><span class="live-pill">LIVE</span></div>
+    <div class="weather-stats"><div><b id="weatherFeels">—°</b><span>Feels like</span></div><div><b id="weatherRain">—%</b><span>Rain chance</span></div><div><b id="weatherWind">—</b><span>Wind</span></div></div>
+    <div id="weatherTips" class="tips"></div>
+    <div class="weather-destination"><b>Destination</b><span id="destinationWeatherText">Select a destination for forecast-aware travel tips.</span></div>
+    <div class="forecast-head"><b>7-day forecast</b></div>
+    <div id="forecast" class="forecast"></div>
+  </section>
+
+  <section id="trainPanel" class="panel train-panel hidden">
+    <div class="panel-head"><div><small>RAIL PLANNER</small><h2>Train timing</h2><p>Planning windows only — not live departures.</p></div><button onclick="closePanel('trainPanel')">×</button></div>
+    <div id="trainSchedule" class="schedule"></div>
+  </section>
+
+  <section id="navHud" class="nav-hud hidden">
+    <div><span class="live-dot"></span> LIVE NAVIGATION <b id="navDestination">—</b></div>
+    <div id="navInstruction" class="nav-instruction">Follow the highlighted road.</div>
+    <div class="nav-metrics"><div><strong id="navRemaining">—</strong><span>remaining</span></div><div><strong id="navEta">—</strong><span>ETA</span></div><div><strong id="navSpeed">0</strong><span>km/h</span></div></div>
+    <div class="nav-actions"><button onclick="recenterNavigation()">⌖ Recenter</button><button class="stop-nav" onclick="stopNavigation()">■ Stop</button></div>
+  </section>
+
+  <section id="stepsPanel" class="steps-panel hidden"><div class="steps-head"><b>Turn-by-turn route</b><button onclick="closePanel('stepsPanel')">×</button></div><div id="routeSteps"></div></section>
+
+  <button class="nearby-fab" onclick="togglePanel('nearbyPanel')">✦ Nearby</button>
+  <button id="listenBtn" class="listen-control" onclick="toggleSpeech()"><span>🔊</span><span id="listenText">Listen</span></button>
+  <div id="awarenessBar" class="awareness"><span>✦</span><b>Smart tip</b><span id="awarenessText">Getting local travel awareness…</span></div>
+</main>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="{% static 'js/map.js' %}"></script>
+</body></html>

@@ -1,0 +1,6 @@
+from,to,status,estimated_time,distance_km,interchanges,fare_inr
+Sahid Sthal,Rajiv Chowk,OK,48 min,22.6,1,54
+Rajiv Chowk,Hauz Khas,OK,20 min,10.3,0,32
+New Delhi,Botanical Garden,OK,37 min,15.8,1,43
+Kashmere Gate,Hauz Khas,OK,29 min,14.4,0,43
+Dwarka,Botanical Garden,OK,1 hr 11 min,54.0,3,64
