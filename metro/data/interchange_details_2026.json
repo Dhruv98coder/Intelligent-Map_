@@ -1,0 +1,402 @@
+[
+  {
+    "station_id":5,
+    "station_name":"Welcome",
+    "from_line":"Pink Line",
+    "to_line":"Red Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Pink Line train at Welcome.",
+      "Follow interchange signs for the Red Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":8,
+    "station_name":"Kashmere Gate",
+    "from_line":"Red Line",
+    "to_line":"Violet Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Red Line train at Kashmere Gate.",
+      "Follow interchange signs for the Violet Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":8,
+    "station_name":"Kashmere Gate",
+    "from_line":"Red Line",
+    "to_line":"Yellow Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Red Line train at Kashmere Gate.",
+      "Follow interchange signs for the Yellow Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":8,
+    "station_name":"Kashmere Gate",
+    "from_line":"Violet Line",
+    "to_line":"Yellow Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Violet Line train at Kashmere Gate.",
+      "Follow interchange signs for the Yellow Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":13,
+    "station_name":"Inderlok",
+    "from_line":"Green Line",
+    "to_line":"Red Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Green Line train at Inderlok.",
+      "Follow interchange signs for the Red Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":16,
+    "station_name":"Netaji Subash Place",
+    "from_line":"Pink Line",
+    "to_line":"Red Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Pink Line train at Netaji Subash Place.",
+      "Follow interchange signs for the Red Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":41,
+    "station_name":"Azadpur",
+    "from_line":"Pink Line",
+    "to_line":"Yellow Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Pink Line train at Azadpur.",
+      "Follow interchange signs for the Yellow Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":49,
+    "station_name":"New Delhi",
+    "from_line":"Airport Express",
+    "to_line":"Yellow Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Airport Express train at New Delhi.",
+      "Follow interchange signs for the Yellow Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":50,
+    "station_name":"Rajiv Chowk",
+    "from_line":"Blue Line",
+    "to_line":"Yellow Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Blue Line train at Rajiv Chowk.",
+      "Follow interchange signs for the Yellow Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":52,
+    "station_name":"Central Secretariat",
+    "from_line":"Violet Line",
+    "to_line":"Yellow Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Violet Line train at Central Secretariat.",
+      "Follow interchange signs for the Yellow Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":56,
+    "station_name":"Dilli Haat - INA",
+    "from_line":"Pink Line",
+    "to_line":"Yellow Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Pink Line train at Dilli Haat - INA.",
+      "Follow interchange signs for the Yellow Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":59,
+    "station_name":"Hauz Khas",
+    "from_line":"Magenta Line",
+    "to_line":"Yellow Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Magenta Line train at Hauz Khas.",
+      "Follow interchange signs for the Yellow Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":68,
+    "station_name":"Sikanderpur",
+    "from_line":"Rapid Metro",
+    "to_line":"Yellow Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Rapid Metro train at Sikanderpur.",
+      "Follow interchange signs for the Yellow Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":74,
+    "station_name":"Anand Vihar",
+    "from_line":"Blue Line",
+    "to_line":"Pink Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Blue Line train at Anand Vihar.",
+      "Follow interchange signs for the Pink Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":75,
+    "station_name":"Karkarduma",
+    "from_line":"Blue Line",
+    "to_line":"Pink Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Blue Line train at Karkarduma.",
+      "Follow interchange signs for the Pink Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":81,
+    "station_name":"Botanical Garden",
+    "from_line":"Blue Line",
+    "to_line":"Magenta Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Blue Line train at Botanical Garden.",
+      "Follow interchange signs for the Magenta Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":87,
+    "station_name":"Mayur Vihar-I",
+    "from_line":"Blue Line",
+    "to_line":"Pink Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Blue Line train at Mayur Vihar-I.",
+      "Follow interchange signs for the Pink Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":92,
+    "station_name":"Mandi House",
+    "from_line":"Blue Line",
+    "to_line":"Violet Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Blue Line train at Mandi House.",
+      "Follow interchange signs for the Violet Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":100,
+    "station_name":"Kirti Nagar",
+    "from_line":"Blue Line",
+    "to_line":"Green Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Blue Line train at Kirti Nagar.",
+      "Follow interchange signs for the Green Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":103,
+    "station_name":"Rajouri Garden",
+    "from_line":"Blue Line",
+    "to_line":"Pink Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Blue Line train at Rajouri Garden.",
+      "Follow interchange signs for the Pink Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":108,
+    "station_name":"Janak Puri West",
+    "from_line":"Blue Line",
+    "to_line":"Magenta Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Blue Line train at Janak Puri West.",
+      "Follow interchange signs for the Magenta Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":113,
+    "station_name":"Dwarka",
+    "from_line":"Blue Line",
+    "to_line":"Grey Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Blue Line train at Dwarka.",
+      "Follow interchange signs for the Grey Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":121,
+    "station_name":"Dwarka Sector - 21",
+    "from_line":"Airport Express",
+    "to_line":"Blue Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Airport Express train at Dwarka Sector - 21.",
+      "Follow interchange signs for the Blue Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":127,
+    "station_name":"Lajpat Nagar",
+    "from_line":"Pink Line",
+    "to_line":"Violet Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Pink Line train at Lajpat Nagar.",
+      "Follow interchange signs for the Violet Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  },
+  {
+    "station_id":131,
+    "station_name":"Kalkaji Mandir",
+    "from_line":"Magenta Line",
+    "to_line":"Violet Line",
+    "estimated_walk_m":250,
+    "estimated_walk_min":4,
+    "indoor_walk":true,
+    "steps":[
+      "Get off the Magenta Line train at Kalkaji Mandir.",
+      "Follow interchange signs for the Violet Line.",
+      "Walk through the transfer concourse and follow platform signs.",
+      "Allow about 4 min \/ 250 m for the transfer (planning estimate).",
+      "Platform\/gate-level indoor geometry is not present in the supplied feed; verify station signage."
+    ]
+  }
+]

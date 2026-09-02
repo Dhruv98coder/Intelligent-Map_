@@ -1,0 +1,16 @@
+{% load static %}
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GoPlan | Delhi NCR Metro</title><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="{% static 'css/metro.css' %}">
+</head><body><div id="metroMap"></div>
+<header class="metro-topbar"><div class="brand"><div class="mark">🚇</div><div><b class="dekho-brand"><span class="saffron">DEKHO</span> <span class="green">BHARAT</span></b><span class="intelligent-brand">INTELLIGENT MAP <i>· DELHI NCR</i></span></div></div><div class="metro-actions"><button class="back-road" onclick="location.href='/'">← Road Map</button><button onclick="useGPS()">⌖ My location</button></div></header>
+<aside class="metro-panel"><div class="panel-head"><div><small>DELHI NCR TRANSIT</small><h1>Metro journey</h1><p>Full network view • line changes • station-by-station guidance</p></div><button onclick="togglePanel()">×</button></div>
+<div class="station-input"><label>FROM STATION</label><input id="startStation" placeholder="e.g. Rajiv Chowk" autocomplete="off"></div><div id="startSuggestions" class="suggestions"></div>
+<div class="station-input"><label>TO STATION</label><input id="endStation" placeholder="e.g. HUDA City Centre" autocomplete="off"></div><div id="endSuggestions" class="suggestions"></div>
+<div class="quick"><button onclick="useGPS()">⌖ Find nearest station</button><button onclick="swapStations()">⇅ Swap</button></div><div id="nearestStationCard" class="nearest-station-card"><small>NEAREST METRO</small><b>Allow location to calculate station distance</b></div>
+<button class="route-btn" onclick="findMetroRoute()">Find metro route →</button>
+<div id="routeResult"></div>
+<div class="legend"><b>Network lines</b><div id="lineLegend"></div></div></aside>
+<button class="mobile-toggle" onclick="togglePanel()">☰ Metro</button>
+<script>window.METRO_STATIONS={{ stations_json|safe }}; window.METRO_LINE_PATHS={{ line_paths_json|safe }}; window.METRO_INTERCHANGES={{ interchange_json|safe }};</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="{% static 'js/metro.js' %}"></script>
+</body></html>

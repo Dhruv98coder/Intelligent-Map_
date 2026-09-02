@@ -1,0 +1,13 @@
+network,fare_calendar,distance_slab,fare_inr,fare_type,effective_from
+DMRC Network,Normal days (Mon-Sat),0-2 km,11,Token,Effective 2025-08-25
+DMRC Network,Normal days (Mon-Sat),2-5 km,21,Token,Effective 2025-08-25
+DMRC Network,Normal days (Mon-Sat),5-12 km,32,Token,Effective 2025-08-25
+DMRC Network,Normal days (Mon-Sat),12-21 km,43,Token,Effective 2025-08-25
+DMRC Network,Normal days (Mon-Sat),21-32 km,54,Token,Effective 2025-08-25
+DMRC Network,Normal days (Mon-Sat),>32 km,64,Token,Effective 2025-08-25
+DMRC Network,Sunday & national holidays,0-2 km,11,Token,Effective 2025-08-25
+DMRC Network,Sunday & national holidays,2-5 km,11,Token,Effective 2025-08-25
+DMRC Network,Sunday & national holidays,5-12 km,21,Token,Effective 2025-08-25
+DMRC Network,Sunday & national holidays,12-21 km,32,Token,Effective 2025-08-25
+DMRC Network,Sunday & national holidays,21-32 km,43,Token,Effective 2025-08-25
+DMRC Network,Sunday & national holidays,>32 km,54,Token,Effective 2025-08-25
